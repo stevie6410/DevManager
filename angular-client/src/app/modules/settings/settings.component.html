@@ -1,0 +1,26 @@
+<app-page [title]="title">
+    <div class="page-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="octicon octicon-settings"></span> General Settings</h3>
+                    </div>
+                    <div class="list-group">
+                        <a class="list-group-item" [routerLink]="['/settings/crud/departments']" [routerLinkActive]="['active']">Departments</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/developers']" [routerLinkActive]="['active']"> Developers</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/softwarepackages']" [routerLinkActive]="['active']">Software Packages</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/issuetypes']" [routerLinkActive]="['active']"> Issue Types</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/developmenttypes']" [routerLinkActive]="['active']"> Development Types</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/doctypes']" [routerLinkActive]="['active']"> Doc Types</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/status']" [routerLinkActive]="['active']"> Statuses</a>
+                        <a class="list-group-item" [routerLink]="['/settings/crud/developmentrequestdefaults']" [routerLinkActive]="['active']"> Development Request Defaults</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</app-page>

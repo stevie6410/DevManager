@@ -1,0 +1,7 @@
+<div class="card-group">
+  <deployment-indicator class="card text-center" [environment]="'Development'" [deployment]="devDeployment" [package]="package" (onDeploy)="deploy('DEV')" (onShowEvents)="showEvents($event)"></deployment-indicator>
+  <deployment-indicator class="card text-center" [environment]="'Test'" [deployment]="testDeployment" [package]="package" (onDeploy)="deploy('TEST')"></deployment-indicator>
+  <deployment-indicator class="card text-center" [environment]="'Production'" [deployment]="prodDeployment" [package]="package" (onDeploy)="deploy('PROD')" (onShowEvents)="showEvents($event)"></deployment-indicator>
+</div>
+
+<deployment-events-viewer [events]="events" (onClose)="events = null"></deployment-events-viewer>

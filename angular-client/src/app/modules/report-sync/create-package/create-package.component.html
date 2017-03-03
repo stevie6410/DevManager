@@ -1,0 +1,30 @@
+<app-page [title]="title">
+  <!--Page Buttons-->
+  <button type="submit" class="btn btn-success pull-right page-button" [disabled]="!createPackageForm.form.valid">Create Package<i class="fa fa-spinner fa-spin" *ngIf="isSaving"></i></button>
+
+  <!--Page Body-->
+  <div class="page-body">
+    <div class="row">
+      <div class="col">
+        <form #createPackageForm="ngForm" (ngSubmit)="onSubmit()">
+          <!--<legend>Create New Package</legend>-->
+          <div class="form-group">
+
+            <label>Name</label>
+            <input type="text" name="name" class="form-control input-sm" placeholder="e.g. New SAO Bookings Report" required [(ngModel)]="packageName"
+              #name="ngModel">
+              <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                <div [hidden]="!name.errors.required">
+                  Package Name is required
+                </div>
+              </div>
+
+              <br>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</app-page>

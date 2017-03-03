@@ -1,0 +1,16 @@
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-control-sm{
+    height: 26px;
+}
+
+.tab-panel{
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.reportspec-btngroup{
+    margin-top:10px;
+}

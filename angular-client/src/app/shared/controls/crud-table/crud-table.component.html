@@ -1,0 +1,21 @@
+<table class="table table-condensed table-hover table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let col of config.cols">{{col.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+
+      <td>
+        <button *ngIf="isRowSelected(row)" (click)="saveRow(row)" type="button" class="btn btn-success btn-xs"><i class="fa fa-save"></i> true</button>
+        <button *ngIf="!isRowSelected(row)" (click)="editRow(row)" type="button" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> false</button>
+      </td>
+      <td *ngFor="let col of config.cols">
+        <span *ngIf="!isRowSelected(row)">{{row[col.name]}}</span>
+        <input *ngIf="isRowSelected(row)" class="table-edit" type="text" [(ngModel)]="row[col.name]">
+      </td>
+    </tr>
+  </tbody>
+</table>

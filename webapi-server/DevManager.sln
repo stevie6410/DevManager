@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevManager.WebApi", "DevManager.WebApi\DevManager.WebApi.csproj", "{8B91BCA0-03F3-488B-B264-D64CC3C44BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevManager.SqlServer.Deployments", "DevManager.SqlServer.Deployments\DevManager.SqlServer.Deployments.csproj", "{432835B5-D84B-48FB-8743-DBA76616B077}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B91BCA0-03F3-488B-B264-D64CC3C44BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B91BCA0-03F3-488B-B264-D64CC3C44BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B91BCA0-03F3-488B-B264-D64CC3C44BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B91BCA0-03F3-488B-B264-D64CC3C44BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432835B5-D84B-48FB-8743-DBA76616B077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432835B5-D84B-48FB-8743-DBA76616B077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432835B5-D84B-48FB-8743-DBA76616B077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432835B5-D84B-48FB-8743-DBA76616B077}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,89 @@
+<app-page [title]="title">
+  <!--Page Buttons-->
+  <button type="button" class="btn btn-success page-button">Save Changes</button>
+
+  <!--Page Body-->
+  <div class="page-body">
+    <div *ngIf="isLoading">
+      <h4>Loading Package</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="package">
+      <form #packageForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-6">
+            <!--Package Name-->
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" class="form-control form-control-sm" placeholder="e.g. New SAO Bookings Report" required [(ngModel)]="package.name"
+                #name="ngModel">
+                <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+                  <div [hidden]="!name.errors.required">Package Name is required</div>
+                </div>
+            </div>
+
+            <!--Package Description-->
+            <div class="form-group">
+              <label>Description / Release Notes</label>
+              <textarea rows="3" name="description" class="form-control form-control-sm" placeholder="Enter a summary of what has changed in this release, such as which features were added and which bugs were fixed"
+                [(ngModel)]="package.description" #description="ngModel"></textarea>
+            </div>
+
+            <!--Package Ticket Ref-->
+            <div class="form-group">
+              <label>Ticket Ref #</label>
+              <input type="text" name="ticketRef" class="form-control form-control-sm" placeholder="e.g. SAORPT-123" [(ngModel)]="package.ticketRef"
+                #ticketRef="ngModel">
+            </div>
+
+          </div>
+
+          <div class="col-sm-6">
+            <!--Created On-->
+            <div class="form-group">
+              <label>Created</label>
+              <input name="createdOn" class="form-control form-control-sm" required [value]="package.createdOn | amTimeAgo" disabled>
+            </div>
+            <!--Created By-->
+            <div class="form-group">
+              <label>Created By</label>
+              <input name="createdBy" class="form-control form-control-sm" required [value]="package.createdBy" disabled>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <deployment-overview [package]="package"></deployment-overview>
+      <br>
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{active:  tabIsSelected(tabs.DBObjects)}" (click)="tabSelected(tabs.DBObjects)">
+              <span class="fa fa-database"></span> Database Objects
+              <span class="badge badge-default">{{package?.packageDbObjects.length}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{active: tabIsSelected(tabs.SSRSReports)}" (click)="tabSelected(tabs.SSRSReports)">
+              <i class="fa fa-bar-chart"></i> SSRS Reports
+              <!--<span class="badge">{{package?.ssrsReports.length}}</span>-->
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="tabs.DBObjects">
+          <db-objects-panel [package]="package" (onReload)="loadPackage(package.id)"></db-objects-panel>
+        </div>
+        <div *ngSwitchCase="tabs.SSRSReports">
+          <ssrs-reports-panel [package]="package"></ssrs-reports-panel>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</app-page>

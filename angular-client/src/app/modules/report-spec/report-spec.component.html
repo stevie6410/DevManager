@@ -1,0 +1,199 @@
+<h3>Report Specification</h3>
+<h4>{{data?.ReportName}}</h4>
+
+<div *ngIf="isLoading">
+	<h2>Is Loading</h2>
+	<div class="progress">
+		<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="" aria-valuemin="" aria-valuemax="" style="width: 100%;">
+</div>
+</div>
+
+</div>
+
+
+<form *ngIf="data" class="form-horizontal" [formGroup]="form" autocomplete="off" novalidate #reportSpecForm>
+	<legend>Report Spec Header</legend>
+
+	<div class="btn-group">
+		<button type="button" (click)="onSubmit()" class="btn btn-success btn-sm" [disabled]="false"> <i class="fa fa-save"></i> Save Changes<span class="fa fa-spinner fa-spin" *ngIf="isSaving"></span></button>
+		<button type="button" (click)="exportPDF()" class="btn btn-danger btn-sm"> <i class="fa fa-file-pdf-o"></i> Export PDF</button>
+	</div>
+	<br>
+	<p-accordion [multiple]="true">
+		<p-accordionTab header="Section A - Header Information" [selected]="true">
+
+		<form-text [label]="'Report Name'" formControlName="ReportName" [control]="form.controls['ReportName']"></form-text>
+		<form-text [label]="'Preapred By'" formControlName="PreparedBy" [control]="form.controls['PreparedBy']"></form-text>
+		<form-text [label]="'Business Area'" formControlName="BusinessArea" [control]="form.controls['BusinessArea']"></form-text>
+		<form-text [label]="'Business Owner'" formControlName="BusinessOwner" [control]="form.controls['BusinessOwner']"></form-text>
+		<form-text [label]="'Report Type'" formControlName="ReportType" [control]="form.controls['ReportType']"></form-text>
+		<form-text [label]="'Software Package'" formControlName="SoftwarePackage" [control]="form.controls['SoftwarePackage']"></form-text>
+		<form-text [label]="'Business Purpose'" formControlName="BusinessPurpose" [control]="form.controls['BusinessPurpose']"></form-text>
+		<form-text [label]="'Std Vs Ad-Hoc Desc'" formControlName="StdVsAdHocDesc" [control]="form.controls['StdVsAdHocDesc']"></form-text>
+
+
+		</p-accordionTab>
+		<!--<p-accordionTab header="Section B - Data Requirements" [selected]="true">
+		
+		</p-accordionTab>
+		<p-accordionTab header="Section C - Delivery Method" [selected]="true">
+		
+		</p-accordionTab>-->
+		<p-accordionTab header="Section D - Source Data" [selected]="true">
+			<crud-table [data]="form.controls['ReportSpecSourceDatas'].value" [config]="sourceDataTableConfig"></crud-table>
+		</p-accordionTab>
+		<p-accordionTab header="Section E - Filters" [selected]="true">
+		</p-accordionTab>
+		<p-accordionTab header="Section F - Parameters" [selected]="true">
+		</p-accordionTab>
+		<p-accordionTab header="Section G - Data Selections" [selected]="true">
+		</p-accordionTab>
+	</p-accordion>
+
+</form>
+
+<pre>
+	{{ form.value | json}}
+</pre>
+
+
+<!--
+<form *ngIf="data" class="form-horizontal" (ngSubmit)="onSubmit()" #detailForm="ngForm">
+
+	<div class="btn-group">
+		<button type="button" (click)="onSubmit()" class="btn btn-success btn-sm" [disabled]="editButtonsDisabled || !detailForm.form.valid || !detailForm.form.dirty"> <i class="fa fa-save"></i> Save Changes<span class="fa fa-spinner fa-spin" *ngIf="isSaving"></span></button>
+		<button type="button" (click)="exportPDF()" class="btn btn-danger btn-sm"> <i class="fa fa-file-pdf-o"></i> Export PDF</button>
+	</div>
+	<br>
+	<p-accordion [multiple]="true">
+		<p-accordionTab header="Section A - Header Information" [selected]="true">
+
+
+
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Report Name</label>
+				<div class="col-sm-10">
+					<input name="ReportName" [(ngModel)]="data.ReportName" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Prepared By</label>
+				<div class="col-sm-10">
+					<input name="PreparedBy" [(ngModel)]="data.PreparedBy" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Business Area</label>
+				<div class="col-sm-10">
+					<input name="BusinessArea" [(ngModel)]="data.BusinessArea" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Business Owner</label>
+				<div class="col-sm-10">
+					<input name="BusinessOwner" [(ngModel)]="data.BusinessOwner" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Report Type</label>
+				<div class="col-sm-10">
+					<input name="ReportType" [(ngModel)]="data.ReportType" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Software Package</label>
+				<div class="col-sm-10">
+					<input name="SoftwarePackage" [(ngModel)]="data.SoftwarePackage" class="form-control">
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Business Purpose</label>
+				<div class="col-sm-10">
+					<p-editor name="BusinessPurpose" [(ngModel)]="data.BusinessPurpose"></p-editor>
+				</div>
+			</div>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Standard / AdHoc Report</label>
+				<div class="col-sm-10">
+					<p-editor name="StdVsAdHocDesc" [(ngModel)]="data.StdVsAdHocDesc"></p-editor>
+				</div>
+			</div>
+		</p-accordionTab>
+		<p-accordionTab header="Section B - Data Requirements" [selected]="true">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="col-sm-3">Requirement</th>
+						<th class="col-sm-2">Result</th>
+						<th class="col-sm-7">Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>World Data</td>
+						<td>
+							<input type="checkbox" name="RequiresWorldData" [(ngModel)]="data.RequiresWorldData">
+						</td>
+						<td>
+							<input type="text" name="RequiresWorldDataNotes" [(ngModel)]="data.RequiresWorldDataNotes" class="form-control form-control-sm">
+						</td>
+					</tr>
+					<tr>
+						<td>Local Data Storage</td>
+						<td><input type="checkbox" name="RequiresLocalDataStorage" [(ngModel)]="data.RequiresLocalDataStorage"></td>
+						<td><input type="text" name="RequiresLocalDataStorageNotes" [(ngModel)]="data.RequiresLocalDataStorageNotes" class="form-control form-control-sm"></td>
+					</tr>
+					<tr>
+						<td>Application Interface</td>
+						<td><input type="checkbox" name="RequiresApplicationInterface" [(ngModel)]="data.RequiresApplicationInterface"></td>
+						<td><input type="text" name="RequiresApplicationInterfaceNotes" [(ngModel)]="data.RequiresApplicationInterfaceNotes" class="form-control form-control-sm"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</p-accordionTab>
+		<p-accordionTab header="Section C - Delivery Method" [selected]="true">
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Report Name</label>
+				<div class="col-sm-10">
+					<p-editor name="GroupOrderByDesc" [(ngModel)]="data.GroupOrderByDesc"></p-editor>
+				</div>
+			</div>
+			<br>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Sub Totals / Summary</label>
+				<div class="col-sm-10">
+					<p-editor name="SubTotalSummaryDesc" [(ngModel)]="data.SubTotalSummaryDesc"></p-editor>
+				</div>
+			</div>
+			<br>
+			<div class="form-group form-group-sm">
+				<label class="col-sm-2 control-label">Notes</label>
+				<div class="col-sm-10">
+					<p-editor name="Notes" [(ngModel)]="data.Notes"></p-editor>
+				</div>
+			</div>
+		</p-accordionTab>
+		<p-accordionTab header="Section D - Source Data" [selected]="true">
+			<crud-table [data]="data.ReportSpecSourceDatas" [config]="sourceDataTableConfig"></crud-table>
+		</p-accordionTab>
+		<p-accordionTab header="Section E - Filters" [selected]="true">
+		</p-accordionTab>
+		<p-accordionTab header="Section F - Parameters" [selected]="true">
+		</p-accordionTab>
+		<p-accordionTab header="Section G - Data Selections" [selected]="true">
+			awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br> awsd asd
+			<br>
+
+		</p-accordionTab>
+	</p-accordion>
+
+</form>-->

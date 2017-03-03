@@ -1,0 +1,16 @@
+<table class="table table-sm table-striped table-hover" *ngIf="metadata">
+  <thead>
+    <tr>
+      <th *ngFor="let col of metadata.listCols">{{col.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let col of metadata.listCols">
+        <span *ngIf="col.date">{{row[col.name] | amTimeAgo}}</span>
+        <a *ngIf="col.routerLink" [routerLink]="[col.routerLink + '/' + row[col.routerParam]]">{{row[col.name]}}</a>
+        <span *ngIf="!col.date && !col.routerLink">{{row[col.name]}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

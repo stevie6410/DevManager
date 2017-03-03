@@ -1,0 +1,39 @@
+<div *ngIf="metadata">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<a (click)="navigateBack()">
+					<span class="fa fa-arrow-circle-o-left">&nbsp;</span>
+				</a>{{metadata.entityName}} Detail
+			</h3>
+		</div>
+		<!-- List group -->
+		<ul class="list-group">
+			<li *ngIf="hasError" class="list-group-item">
+				<h1>Error loading {{metadata.entityName}}</h1>
+			</li>
+			<li *ngIf="isLoading" class="list-group-item">
+				<h1>Is Loading</h1>
+			</li>
+			<li class="list-group-item" *ngIf="data">
+				<form class="form-horizontal" (ngSubmit)="onSubmit()" #detailForm="ngForm">
+
+					<div *ngFor="let col of metadata.detailCols" class="form-group form-group-sm">
+						<label class="col-sm-2 control-label">{{col.label}}</label>
+						<div class="col-sm-10">
+							<input [name]="col.name" [(ngModel)]="data[col.name]" class="form-control" required>
+						</div>
+					</div>
+
+					<div class="btn-group">
+						<button type="button" (click)="onSubmit()" class="btn btn-success btn-sm pull-right" [disabled]="editButtonsDisabled || !detailForm.form.valid || !detailForm.form.dirty">
+                        Save Changes 
+                        <span class="fa fa-spinner fa-spin" *ngIf="isSaving"></span></button>
+					</div>
+				</form>
+			</li>
+			<change-detail-form [model]="data"></change-detail-form>
+		</ul>
+	</div>
+	<delete-panel [entityName]="metadata.entityName" (deleteConfirmed)="delete($event)" [hasDeleteError]="hasDeleteError"></delete-panel>
+</div>

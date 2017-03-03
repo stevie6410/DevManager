@@ -1,0 +1,108 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#content-body {
+    height: 100%;
+ }
+
+    #content-body main {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+
+#content {
+    font-size: 12px;
+    height: 100%;
+    flex: 1;
+    overflow: auto;
+}
+
+.form-horizontal {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea.form-control {
+    height: 100%;
+}
+
+#sidebar-container {
+    background-color: #3D464D;
+    width: 200px;
+    min-width: 200px;
+    /*box-shadow: inset -30px 10px 10px -27px #222;*/
+    color: rgba(255,255,255,0.8);
+    /*text-shadow: 1px 1px 1px #444;*/
+    /*font-family: 'Montserrat',sans-serif;*/
+    padding-top: 10px;
+
+    position: relative;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.flex-spacer {
+    flex: 1;
+}
+
+div .float-right{
+    float: right;
+}
+
+button .float-right{
+    float: right;
+}
+
+.full-width{
+    width: 100%
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.panel .table{
+    margin-bottom: 0;
+}
+
+.flex{
+    display: flex;
+}
+
+.devman-list-btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
+}
+
+.alert .alert-icon{
+    padding: 7px 15px;
+}
+
+#topbar .debug {
+    display: none !important;
+}
+
+.align-self-center{
+    align-self: center;
+}
+
+.no-margin{
+    margin: 0;
+}
+

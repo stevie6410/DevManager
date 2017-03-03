@@ -1,0 +1,19 @@
+<p-dataTable [value]="data" [editable]="true" [(selection)]="selection" [responsive]="true">
+  <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+  <p-column field="TableName" header="Table Name" [editable]="true"></p-column>
+  <p-column field="SourceSystem" header="Source System" [editable]="true"></p-column>
+  <p-column field="ElementName" header="Element Name" [editable]="true"></p-column>
+  <footer>
+      <div class="row">
+        <div class="col-xs-6 text-left">
+          <span>Selected {{selection.length}} items</span>
+        </div>
+        <div class="col-xs-6">
+          <div class="text-right">
+            <button type="button" class="btn btn-success btn-xs" (click)="addNew()"> <i class="fa fa-plus"></i> Add New</button>
+            <button type="button" class="btn btn-danger btn-xs" (click)="deleteSelected()"> <i class="fa fa-minus"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+  </footer>
+</p-dataTable>

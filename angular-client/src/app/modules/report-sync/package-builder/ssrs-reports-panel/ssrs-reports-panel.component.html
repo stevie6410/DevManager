@@ -1,0 +1,22 @@
+<table class="table table-sm table-hover table-striped">
+  <thead class="thead-default">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Path</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of package.ssrsReports" class="success">
+      <td><span class="fa fa-bar-chart"></span></td>
+      <td>{{report.name}}</td>
+      <td>{{report.path}}</td>
+      <td>
+        <button class="btn btn-xs btn-danger">
+                <span class="fa fa-trash"></span>
+              </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

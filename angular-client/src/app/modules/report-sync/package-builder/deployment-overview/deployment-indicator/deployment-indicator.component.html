@@ -1,0 +1,48 @@
+<h5 class="card-header">{{environment}}</h5>
+<div class="card-block align-middle">
+
+  <div *ngIf="deployment">
+
+    <!--Deploy Pending-->
+    <div *ngIf="deployment?.status == 'Pending'">
+      <h1 class="deploy-status-icon"><i class="fa fa-refresh fa-spin text-warning"></i></h1>
+
+    </div>
+
+    <!--Deploy Success-->
+    <div *ngIf="deployment?.status == 'Complete'">
+      <h1 class="deploy-status-icon"><i class="fa fa-check-square text-success"></i></h1>
+      <span class="card-text">Deployed {{deployment?.deployedOn | amTimeAgo}}</span>
+      <!--<span class="card-text">Deployed to <strong>{{deployment?.environmentTo?.databaseName}}</strong> on <strong>{{deployment?.environmentTo?.serverName}}</strong></span>-->
+
+    </div>
+
+    <!--Deploy Failed-->
+    <div *ngIf="deployment?.status == 'Failed'">
+      <h1 class="deploy-status-icon"><i class="fa fa-exclamation-triangle text-danger"></i></h1>
+
+    </div>
+
+    <p class="card-text">Deployment Status: <span class="badge badge-default">{{deployment?.status}}</span></p>
+
+    <div class="btn-group" role="group">
+      <button class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Options
+    </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" (click)="onShowEvents.emit(deployment.deployPackageEvents)">Show deploy events</a>
+        <a class="dropdown-item" (click)="deleteDeployment()">Delete Deployment</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="!deployment">
+    <!--Deploy Button-->
+    <button class="btn btn-secondary deployment-btn" (click)="deploy()" *ngIf="!deployment">Deploy</button>
+  </div>
+
+</div>
+<div class="card-footer">
+  <small class="text-muted">{{deployment?.environmentTo?.databaseName}} on {{deployment?.environmentTo?.serverName}}</small>
+</div>

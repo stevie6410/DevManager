@@ -1,0 +1,17 @@
+nav{
+    margin-bottom: 0px;
+    border-radius: 0px;
+    /*background-color: black;*/
+}
+
+.navbar-brand{
+    min-width: 200px;
+}
+
+.navbar-brand{
+    font-size: 20px;
+}
+
+.navbar-brand .octicon-size-brand{
+    font-size: 20px;
+}

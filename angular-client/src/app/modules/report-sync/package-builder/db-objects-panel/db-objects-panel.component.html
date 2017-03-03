@@ -1,0 +1,92 @@
+<div class="card-block" *ngIf="package">
+
+  <div class="btn-group">
+    <button class="btn btn-sm btn-success" [routerLink]="['/reportsync/packages/build', package.id, 'search', 'dbobjects']"><span class="fa fa-plus"></span> Add DB Object</button>
+    <button class="btn btn-sm btn-warning" (click)="scanForDependencies()">Scan For Dependencies <span *ngIf="isLoadingDependencies" class="fa fa-spinner fa-spin"></span></button>
+  </div>
+
+  <span class="fa fa-info-circle pull-right" popoverTitle="Database Objects" popover="Database objects from the ReportData database. Any objects added here will be part of the deployment package"
+    triggers="mouseenter:mouseleave" placement="left"></span>
+
+</div>
+<table class="table table-sm table-hover table-striped">
+  <thead class="thead-default">
+    <tr>
+      <th></th>
+      <th>Database</th>
+      <th>Schema</th>
+      <th>Object</th>
+      <th></th>
+      <th>Created By</th>
+      <th>Created</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="package">
+    <tr *ngFor="let obj of package.packageDbObjects | orderBy: ['-deployOrder', 'objectName']">
+      <td>
+        <span class="badge badge-default">{{obj.deployOrder}}</span>
+        <span class="badge" [ngClass]="{
+            'badge-warning': obj.attatchType == 'AutoDependency',
+            'badge-success': obj.attatchType == 'Manual'
+          }"><span class="fa" [ngClass]="{
+            'fa-bolt': obj.attatchType == 'AutoDependency',
+            'fa-plus': obj.attatchType == 'Manual' 
+          }"></span>&nbsp; {{obj.attatchType}}</span>
+      </td>
+      <td>{{obj.databaseName}}</td>
+      <td>{{obj.schemaName}}</td>
+      <td>{{obj.objectName}}</td>
+      <td>
+        <span class="badge" [ngClass]="{
+          'badge-warning': obj.lastEventType == 'ALTER',
+          'badge-danger': obj.lastEventType == 'DROP',
+          'badge-success': obj.lastEventType == 'CREATE' 
+          }">{{obj.objectType}}</span>
+      </td>
+      <td>{{obj.createdBy}}</td>
+      <td>{{obj.createdOn | amTimeAgo}}</td>
+      <td>
+        <button class="btn btn-sm btn-info" (click)="showSQLModal(obj)" popover="View SQL Code" triggers="mouseenter:mouseleave"
+          placement="left"><i class="fa fa-code"></i></button>
+        <button class="btn btn-sm btn-danger" (click)="deleteDbObj(obj)" popover="Remove object from package" triggers="mouseenter:mouseleave"
+          placement="left"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--MODALS-->
+
+<!--Add DbObject Modal-->
+<app-modal [name]="'addDbObjectModal'" #addDbObjectModal>
+  <div class="app-modal-header">
+    Add DB Object
+  </div>
+  <div class="app-modal-body">
+    <db-object-search [package]="package"></db-object-search>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="addDbObjectModal.hide()">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</app-modal>
+
+<!--ViewSQL Modal-->
+<app-modal [name]="'viewSQLModal'" #viewSQLModal>
+  <div class="app-modal-header">
+    View SQL
+  </div>
+  <div class="app-modal-body">
+    <pre *ngIf="selectedObj">
+          <code class="language-sql">
+            {{selectedObj.lastEventDDL}}
+          </code>
+        </pre>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="viewSQLModal.hide()">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</app-modal>

@@ -1,0 +1,8 @@
+<div class="card" *ngIf="events">
+  <div class="card-block">
+    <button class="btn btn-sm btn-danger" (click)="onClose.emit(true)">Hide Events</button>
+    <pre>
+      <p *ngFor="let event of events">{{event?.message}}</p> 
+    </pre>
+  </div>
+</div>

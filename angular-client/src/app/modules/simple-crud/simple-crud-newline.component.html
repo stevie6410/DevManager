@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()" #newLineForm="ngForm">
+	<table class="table table-condensed">
+		<tbody>
+			<tr [ngClass]="{warning: !hasError, danger: hasError}" class="warning">
+				<td>
+					<span *ngIf="!isSaving && !hasError" class="octicon octicon-pencil mega-octicon"></span>
+					<span *ngIf="isSaving" class="fa fa-spinner fa-spin fa-2x"></span>
+					<span *ngIf="hasError" class="fa fa-exclamation-triangle fa-2x"></span>
+				</td>
+				<td *ngFor="let col of colDefs">
+					<input type="text" [(ngModel)]="data[col.name]" [name]="col.name" [placeholder]="col.label" class="form-control form-control-sm full-width"
+						autocomplete="off" required>
+				</td>
+				<td>
+					<div class="btn-group pull-right">
+						<button (click)="saveNewLine(data)" class="btn btn-success btn-sm" type="button"><span class="fa fa-save"></span></button>
+						<button class="btn btn-warning btn-sm" type="button"><span class="fa fa-eraser"></span></button>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

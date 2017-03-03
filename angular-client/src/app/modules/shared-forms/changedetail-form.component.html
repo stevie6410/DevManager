@@ -1,0 +1,18 @@
+<table class="table table-condensed" *ngIf="model && hasAuditFields">
+    <thead>
+        <tr class="active">
+            <th>Created By</th>
+            <th>Created On</th>
+            <th>Last Modified By</th>
+            <th>Last Modified On</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="warning">
+            <td>{{model.CreatedBy}}</td>
+            <td>{{model.Created | amCalendar}}</td>
+            <td>{{model.ModifiedBy}}</td>
+            <td>{{model.Modified | amCalendar}}</td>
+        </tr>
+    </tbody>
+</table>

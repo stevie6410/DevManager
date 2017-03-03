@@ -1,0 +1,19 @@
+.deploy-status-icon{
+    text-align: center;
+    font-size: 50px;
+}
+
+.card-header{
+    padding:0.4rem 1.0rem;
+}
+.card-footer{
+    padding: 0.3rem 1.0rem;
+}
+
+.card-block{
+    padding: 15px;
+}
+
+.deployment-btn{
+    margin-bottom: 0.5rem;
+}

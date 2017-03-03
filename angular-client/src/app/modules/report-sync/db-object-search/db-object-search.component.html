@@ -1,0 +1,55 @@
+<app-page [title]="title">
+  <!--Page Buttons-->
+  <!--Page Body-->
+  <div class="page-body">
+
+    <div *ngIf="isLoading">
+      <h4>Loading Package</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="package">
+      <div class="input-group">
+        <input type="text" class="form-control" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Search for database objects...">
+        <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="search()">Search</button>
+      </span>
+      </div>
+    </div>
+    <br>
+    <table class="table table-sm table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Database</th>
+          <th>Schema</th>
+          <th>Object</th>
+          <th>DDL Type</th>
+          <th>Created By</th>
+          <th>Created</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of searchResults" [ngClass]="{success: obj.isInPackage}">
+          <td>
+            <span class="octicon octicon-database"></span>
+          </td>
+          <td>{{obj.databaseName}}</td>
+          <td>{{obj.schemaName}}</td>
+          <td>{{obj.objectName}}</td>
+          <td>{{obj.lastEventType}}</td>
+          <td>{{obj.createdBy}}</td>
+          <td>{{obj.createdOn | amTimeAgo}}</td>
+          <td>
+            <button *ngIf="!obj.isInPackage" class="btn btn-sm btn-outline-success" popover="Add object to package" triggers="mouseenter:mouseleave"
+              placement="left" (click)="addToPackage(obj)"><i class="fa fa-plus"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</app-page>

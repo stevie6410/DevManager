@@ -1,0 +1,7 @@
+{
+    "DevManagerServiceUrl": "#{DevManagerServiceUrl}",
+    "IdentityServerUrl": "#{IdentityServerUrl}",
+    "Environment": "#{Environment}",
+    "Version": "{Version}",
+    "DevManagerNodeServiceUrl": "http://localhost:3000/"
+}

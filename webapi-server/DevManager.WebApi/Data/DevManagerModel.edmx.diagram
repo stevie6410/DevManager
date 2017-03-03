@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ad19efdc2fd4258bfd14e7d4a9acd2b" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="SAODevManagerModel.AffectedDepartment" Width="1.5" PointX="8.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.App" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Attachment" Width="1.5" PointX="11.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Department" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Developer" Width="1.5" PointX="0.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DevelopmentRequestHour" Width="1.5" PointX="8.25" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DevelopmentRequestHoursTemplate" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DevelopmentRequest" Width="1.875" PointX="5.625" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DevelopmentType" Width="1.5" PointX="3.75" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DocType" Width="1.5" PointX="9" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Issue" Width="1.5" PointX="8.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.IssueType" Width="1.5" PointX="6" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.LinkedSSRSReport" Width="1.5" PointX="13.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Report" Width="1.5" PointX="11.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecDataSelection" Width="1.5" PointX="16.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecEmailSubscriptionDelivery" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecFilter" Width="1.5" PointX="16.5" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecHeader" Width="1.5" PointX="14.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecParameter" Width="1.5" PointX="16.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportSpecSourceData" Width="1.5" PointX="16.5" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.RequestStatusSet" Width="1.5" PointX="3.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.RolePermission" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.SoftwarePackage" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.SystemDepartment" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.SAOSystem" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAODevManagerModel.SSRSReport" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="SAODevManagerModel.AffectedDepartment_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.AffectedDepartment_DevelopmentRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.App_DevelopmentRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Apps_Developers" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Apps_SoftwarePackages" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Apps_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Attachment_DocType" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.DevelopmentRequest_Attachment" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SystemDepartment_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Systems_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.DevelopmentRequest_Developer" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Issue_Developer" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Report_Developer" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.System_Developer" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.System_Developer1" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DevelopmentRequestHours_DevelopmentRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.DevelopmentRequest_RequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.DevelopmentRequest_SoftwarePackage" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DevelopmentRequests_DevelopmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DevelopmentRequests_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_ReportSpecHeader_DevelopmentRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Issue_DevelopmentRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Report_DevelopmentRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Issues_IssueType" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Issue_RequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.Issue_System" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_LinkedSSRSReports_Reports" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Reports_SoftwarePackages" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Reports_Systems" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SpecificationDataSelection_ReportSpecification" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SpecificationFilters_ReportSpecification" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_ReportSpecHeader_SoftwarePackages" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SpecificationParameters_ReportSpecification" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SpecificationSourceData_ReportSpecification" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.System_SoftwarePackage" ManuallyRouted="false" />
+        <AssociationConnector Association="SAODevManagerModel.FK_SystemDepartment_Systems" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportDataDBObjectChange" Width="2.875" PointX="4.625" PointY="4.25" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DeployPackageDBObject" Width="2.5" PointX="14.5" PointY="0.5" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DeployPackage" Width="2.125" PointX="11" PointY="0.875" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DeployPackageSSRSReport" Width="2.5" PointX="7.125" PointY="0.5" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DeployPackageDBObjects_DeployPackages" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DeployPackageSSRSReports_DeployPackages" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DeployEnvironment" Width="2" PointX="18" PointY="1.5" />
+        <EntityTypeShape EntityType="SAODevManagerModel.Deployment" Width="2.5" PointX="14.625" PointY="5.125" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Deployments_DeployEnvironments1" />
+        <AssociationConnector Association="SAODevManagerModel.FK_Deployments_DeployPackages" />
+        <EntityTypeShape EntityType="SAODevManagerModel.DeployPackageEvent" Width="2.25" PointX="18" PointY="6.375" />
+        <AssociationConnector Association="SAODevManagerModel.FK_DeployPackageEvents_Deployments" />
+        <EntityTypeShape EntityType="SAODevManagerModel.ReportDataDBObject" Width="2.875" PointX="8.125" PointY="5.5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

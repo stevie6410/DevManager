@@ -1,0 +1,40 @@
+{
+  "development": {
+    "username": "appUser",
+    "password": "Password2",
+    "database": "DevManager_dev",
+    "dialect": "sqlite",
+    "storage": "bin/db.sqlite",
+    "logging": false
+  },
+  "test-pg": {
+    "username": "appUser",
+    "password": "Password2",
+    "database": "DevManager_test",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production-pg": {
+    "username": "appUser",
+    "password": "Password2",
+    "database": "DevManager",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "test-mssql": {
+    "username": "appUser",
+    "password": "Password2",
+    "database": "DevManager",
+    "host": "DC0348",
+    "dialect": "mssql"
+  },
+  "production-mssql": {
+    "username": "appUser",
+    "password": "Password2",
+    "database": "DevManager",
+    "host": "DC0348",
+    "dialect": "mssql"
+  }
+}

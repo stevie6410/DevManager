@@ -1,0 +1,63 @@
+<app-page [title]="title">
+  <!--Page Buttons-->
+  <button type="button" class="btn btn-success pull-right page-button" [routerLink]="['/reportsync/packages/create']">Create Package</button>
+
+  <!--Page Body-->
+  <div class="page-body">
+    <div class="row">
+      <div class="col">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-filter"></i>
+                  Filters 
+                  <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Open packages</a>
+              <a class="dropdown-item">Closed packages</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item">Your open packages</a>
+              <a class="dropdown-item">Your closed packages</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item">Packages with deployment errors</a>
+            </div>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <br>
+
+    <!-- Table -->
+    <table class="table table-striped table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Package Id</th>
+          <th>Name</th>
+          <th>Created On</th>
+          <th>Created By</th>
+          <th>Ticket Ref#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pack of packages">
+          <td>{{pack.id}}</td>
+          <td><a [routerLink]="['/reportsync/packages/build', pack.id]">{{pack.name}}</a></td>
+          <td>{{pack.createdOn | amTimeAgo}}</td>
+          <td>{{pack.createdBy}}</td>
+          <td>{{pack.ticketRef}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="panel-body" *ngIf="isLoading">
+      <h4>Loading Packages...</h4>
+      <div class="progress progress-striped active">
+        <div class="progress-bar" style="width: 100%"></div>
+      </div>
+    </div>
+  </div>
+
+</app-page>

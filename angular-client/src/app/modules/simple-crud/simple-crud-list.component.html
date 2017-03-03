@@ -1,0 +1,42 @@
+<div *ngIf="metadata" class="card">
+	<div class="card-header" [ngClass]="{'card-danger': hasError, 'card-default': !hasError}">
+		<h5 class="card-title pull-left">{{metadata.entityNamePlural}} <span *ngIf="data" class="badge badge-pill badge-default">{{recCount}}</span></h5>
+		<div class="btn-group btn-group-sm pull-right" *ngIf="!hasError">
+			<button (click)="showNewLine = true" *ngIf="!showNewLine" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> &nbsp; Add New</button>
+			<button (click)="showNewLine = false" *ngIf="showNewLine" class="btn btn-danger btn-xs"><i class="fa fa-minus"></i> &nbsp; Cancel Line</button>
+		</div>
+	</div>
+
+	<!--List Group-->
+	<ul class="list-group">
+		<li class="list-group-item" *ngIf="isLoading || !data">
+			<div class="progress progress-striped active">
+				<div class="progress-bar" style="width: 100%"></div>
+			</div>
+			<h5>Loading {{metadata.entityNamePlural}}...</h5>
+		</li>
+		<li class="list-group-item" *ngIf="hasError">
+			<h4 class="text-danger"><span class="fa fa-warning">&nbsp;</span> There was an error while loading {{metadata.entityNamePlural}}</h4>
+		</li>
+	</ul>
+
+	<!--Body Panel-->
+	<div class="panel-body" *ngIf="!hasError">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">Filter</span>
+					<input [(ngModel)]="searchTerm" type="text" class="form-control" [placeholder]="'Search ' + entityLabel + 's...'">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Table -->
+	<app-simple-crud-table [data]="data" [metadata]="metadata"></app-simple-crud-table>
+	<!--New Line Component-->
+	<simple-crud-new-line *ngIf="showNewLine" [metadata]="metadata" (onSaved)="getData()"> </simple-crud-new-line>
+	<!--<simple-crud-new-line *ngIf="showNewLine" [metadata]="metadata" [entityName]="metadata.apiName" [colDefs]="metadata.listCols" (onSaved)="getData()"> </simple-crud-new-line>-->
+	<!--<developers-new-line *ngIf="showNewLine" (onSaved)="getData()"></developers-new-line>-->
+</div>
