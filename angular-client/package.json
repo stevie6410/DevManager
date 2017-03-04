@@ -9,11 +9,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-electron": "ng build --base-href . && copy src\\electron\\* dist",
+    "build-electron": "ng build --base-href . && cp src/electron/* dist",
     "electron": "npm run build-electron && electron dist"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "^1.0.0-rc.0",
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/core": "^2.4.0",
@@ -26,6 +27,7 @@
     "angular2-moment": "^1.1.0",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "electron": "^1.6.1",
     "font-awesome": "^4.6.3",
     "jquery": "^3.1.1",
     "moment": "^2.15.1",
